@@ -17,12 +17,13 @@ import {
 import { outputFromObservable } from '@angular/core/rxjs-interop';
 import { AbstractControl, ControlValueAccessor, ValidationErrors, Validator } from '@angular/forms';
 import { interval, map, Observable } from 'rxjs';
-import { ParentDirective } from './parent.directive';
+import { HostDirective, ParentDirective } from './parent.directive';
 import { NestedInterface, TestInterface, TestObjectType, TestType } from './internal-types';
 
 @Component({
 	selector: 'app-child',
 	template: `Child works`,
+	hostDirectives: [HostDirective],
 })
 export class ChildComponent
 	extends ParentDirective<string>

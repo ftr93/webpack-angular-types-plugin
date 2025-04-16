@@ -1,11 +1,19 @@
 /* eslint-disable */
 // noinspection JSUnusedLocalSymbols
 
-import { Directive, EventEmitter, Input } from '@angular/core';
+import { Directive, EventEmitter, Input, Output } from '@angular/core';
 import { TestInterface } from './internal-types';
 
 interface X<T> {
 	x: T;
+}
+
+@Directive()
+export class HostDirective {
+	@Input() a = 42;
+	@Input() b = '42';
+
+	@Output() c = new EventEmitter<boolean>();
 }
 
 @Directive()

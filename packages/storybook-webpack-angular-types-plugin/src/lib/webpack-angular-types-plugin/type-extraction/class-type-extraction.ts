@@ -7,6 +7,7 @@ import {
 	ClassInformation,
 } from '../../types';
 import { EXCLUDE_DOCS_JS_DOCS_PARAM, groupBy } from '../utils';
+import { getHostDirectives } from './angular-utils';
 import { collectBaseClasses, hasJsDocsTag } from './ast-utils';
 import { mapDeclarationToEntities } from './declaration-mappers';
 import { addGenericTypeMappings } from './type-details';
@@ -56,6 +57,8 @@ function getClassEntities(
 	propertiesToExclude: RegExp | undefined,
 	genericTypeMapping: GenericTypeMapping,
 ): Map<string, Entity> {
+	const hostDirectives = getHostDirectives(classDeclaration);
+
 	const properties = classDeclaration.getProperties();
 	const setters = classDeclaration.getSetAccessors();
 	const getters = classDeclaration.getGetAccessors();
